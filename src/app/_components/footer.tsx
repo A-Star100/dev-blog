@@ -17,7 +17,7 @@ export function Footer() {
               Read more
             </a>
             <a
-              href={`https://github.com/A-Star100/blog-starter-kit/`}
+              href={`https://github.com/A-Star100/`}
               className="mx-3 font-bold hover:underline"
             >
               View on GitHub
