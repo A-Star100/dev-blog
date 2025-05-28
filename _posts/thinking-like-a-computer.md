@@ -25,7 +25,7 @@ print(text)
 ```
 
 and so on in small, discrete steps.
-Don't take **forever** by **overthinking things**, but follow every line like a stepping stone.
+Follow every line like a stepping stone.
 
 Doing so can save you a lot of testing your app, but make sure to test it every once in a while, frameworks
 and operating systems can be quirkier than you expect.
