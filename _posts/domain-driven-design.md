@@ -1,6 +1,6 @@
 ---
 title: "Domain Driven Design"
-excerpt: ""
+excerpt: "Credit to `Domain Driven Design: Tackling Complexity in Software` and my dad"
 coverImage: "/assets/blog/domaindrivendesign/cover.png"
 date: "2024-05-27"
 author:
@@ -24,12 +24,14 @@ Imagine if you were in a team filled with several people. You write messy code t
 Other collaborators might not know about your shenanigans, and even if they do, they'll leave one day.
 If you have messy code like this, **imagine what will happen!**
 
-**If you're running a company, it could break down into pieces!**
-**If you're working for a company, you'll leave them in a tough state, potentially reducing job opportunities.**
-**If you're working on a project, it'll become harder to maintain.**
+If you're running a company, it could break down into pieces!
 
-***That's* why Domain Driven Design is *so important*!**
+If you're working for a company, you'll leave them in a tough state, potentially reducing job opportunities.
+
+If you're working on a project, it'll become harder to maintain.
+
+***That's* why Domain Driven Design is *so important!***
+
 It both helps you and everybody else **keep organized** and **stay stable**!
 
-:)
-
+If you want to learn more about Domain Driven Design, check out [this book](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)!
