@@ -2,7 +2,7 @@
 title: "Thinking like a computer"
 excerpt: ""
 coverImage: "/assets/blog/thinklikecomputer/cover.png"
-date: "2024-05-27"
+date: "2025-05-27"
 author:
   name: Anirudh Sevugan
   picture: "/assets/blog/authors/anirudh.png"
