@@ -2,7 +2,7 @@
 title: "All the boards"
 excerpt: ""
 coverImage: "/assets/blog/dotvspcbvsbrd/cover.png"
-date: "2024-05-28"
+date: "2025-05-28"
 author:
   name: Anirudh Sevugan
   picture: "/assets/blog/authors/anirudh.png"
