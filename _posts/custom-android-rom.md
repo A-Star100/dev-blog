@@ -1,13 +1,13 @@
 ---
 title: "Custom Android ROMs - Breathing new life into old devices"
 excerpt: ""
-coverImage: "/assets/blog/customandroidrom/lineage.jpeg"
+coverImage: "/assets/blog/customandroidrom/lineage.avif"
 date: "2025-12-14"
 author:
   name: Anirudh Sevugan
   picture: "/assets/blog/authors/anirudh.png"
 ogImage:
-  url: "/assets/blog/customandroidrom/lineage.jpeg"
+  url: "/assets/blog/customandroidrom/lineage.avif"
 ---
 
 Every device dies sooner or later in terms of updates.
@@ -25,18 +25,27 @@ But a custom ROM isn't always right for you. So let's dive into the pros and con
 
 ## Pros
 - Lets an officially EOL device benefit from features and improvements in newer versions of Android, including security patches, UI updates, and more!
+
 - Lets an older device use newer apps and newer Android libraries and toolkits.
+
 - Can increase performance due to not being as bloaty as most stock firmware, for example: Samsung's OneUI (which is good but sort of bloaty).
+
 - Allows for ***deeeeep*** customization, and is easier to root than with stock firmware.
+
 - Keeps budget hardware running on newer versions of Android.
+
 - Better/same battery life in most cases.
 
 ## Cons
 - Can brick (render temporarily/permanently unusable) your device if the custom ROM flashing procedure is done incorrectly or if the wrong ROM is used.
+
 - Requires a custom recovery image, ROM, and technical knowledge, and in certain cases, formatting all the data on your phone.
-- Harder to update than with stock firmware (it is still possible to update inside Android; but for major version leaps a new custom ROM is normally required)
+
+- Harder to update than with stock firmware (it is still possible to update inside Android; but for major version leaps a new custom ROM is normally required).
+
 - Requires an unlocked bootloader, **which is not unlockable at all on certain phones, for example, US variants of newer Samsung phones**, **and on Samsung phones, unlocking the bootloader will disable security features and permanently disable Samsung Knox; which will remain unusable even if you go back to stock firmware**.
+
 - Some apps will **refuse to run on modded and/or rooted phones due to quirks with integrity checks, for example banking apps, so keep your modded devices as a backup if you plan to use banking apps often**.
 
-For most people, **custom ROMs are not worth it**, but for people who are willing to take the risks, and want to upgrade their EOL device, go ahead! You'll learn a lot!
+For most people, I'd say that **custom ROMs are not worth it**, but for people who are willing to take the risks, and want to upgrade their EOL device, go ahead! You'll learn a lot!
 Anyway, that's all for now. See you soon! Oh, and Merry Christmas and Happy New Year in advance!
