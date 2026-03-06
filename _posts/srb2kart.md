@@ -141,7 +141,7 @@ So in a new PR I made (not the merged one; a different one), I added
       cxxflags: "-O3 -Wno-register"
 ```
 for `libmodplug`. If you're wondering why SDL2 is recompiled in the yaml, this is why.
-SDL2 in the freedesktop runtime and its mixer lib does NOT come with modplug support enabled.
+SDL2 in the freedesktop runtime and its mixer lib does *not* come with modplug support enabled.
 But if you recompile it with modplug options, you get support.
 
 ### libgme
@@ -156,10 +156,40 @@ So I updated the version. But the cleanup section in the module was causing issu
        - /lib/pkgconfig
 ```
 The `- /lib/*.so` step would end up cleaning the very binaries compiled for SRB2Kart... quite literally.
-So the game would fail to even launch and end up without a mixer.
+So the game would fail to even launch and end up without a sound lib *or* a mixer and practically tell us.
+```shell
+please help...
+```
 So as a quick fix I just hinted out this whole section and it worked again.
 I *guess* v0.6.4 included some breaking changes or somethin I dunno.
-To remedy the `/lib/pkgconfig` and other cleanup steps being thrown out the window; on my last commit before the PR was merged
+### /app/lib and /app/lib64 library paths
+These two paths were *soooooooooo* annoying...
+Apparently on x64 machines /app/lib64 is used by the compiler for that arch's build,
+and /app/lib is used for almost everything else.
+That is why when I tested on my arm64 Ubuntu VM, everything worked!
+But on a heavily used MacBook Air I had with [t2linux](https://t2linux.org) on it, it did not work.
+Thankfully I tested this before I pushed this broken build to prod, and caused **chaos** for over 80,000 Linux gamers worldwide.
+
+How did I fix this??
+Well I just added 
+`- -DCMAKE_INSTALL_LIBDIR=lib`
+to `config-opts`.
+
+But in the `srb2kart` module, I **made sure** to add /app/lib and /app/lib64:
+```yaml
+  - name: srb2kart
+    buildsystem: simple
+    build-options:
+      env:
+        LDFLAGS: "-L/app/lib -L/app/lib64"
+```
+so even if I made a slip-up and forgot to add 
+`- -DCMAKE_INSTALL_LIBDIR=lib`
+the game would still search for libs in `/app/lib64` just in case.
+**Phew!!!**
+
+But back to `libgme`!
+To remedy the `/lib/pkgconfig` and other cleanup steps for `libgme` being thrown out the window; on my last commit before the PR was merged
 I added a top-level cleanup:
 ```yaml
 cleanup:
@@ -174,9 +204,17 @@ Unfortunately, I added `/share/man`, so descriptions of each command would unnec
 They DO regenerate on Flathub's CI (I think) but aren't gonna be used by many workflows on the CI anyway, and since the maintainers
 were fine with it I decided to leave it as is and only clean this up in a new PR I made.
 
+___
+
 And then, it got merged... my contributions were now included in [SRB2Kart on Flathub](https://flathub.org/apps/details/org.srb2.SRB2Kart).
-I was pretty glad honestly :D
-If you play the game on Linux, you've now got an insider look at what happened on the scene!!!
+And over 90,000 gamers who were ***huge*** fans of [Tux](https://en.wikipedia.org/wiki/Tux_(mascot)) over here, were now able to update to my patched version.
+I was pretty glad honestly :D, and it was a huge honor too.
+So now you've now got an insider look at what happened on the scene!!!
+The reason this is so cool is because I always used to **play** SRB2Kart, and **dream** of contributing.
+Well now it's both, I still play (of course man! i'm still trying to beat some records in Time attack!!) *and* contributed!
+
+Thanks to everyone for their support, especially @cbm755 who was incredibly friendly and welcoming when I made the PR,
+and @yakushabb for giving some nice suggestions!
 
 ## So, what's the new PR for?
 It's not crucial, but it is for a library migration
