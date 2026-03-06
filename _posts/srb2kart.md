@@ -43,11 +43,17 @@ But AFTER this another problem arised...
 As mentioned in a [GitHub issue](https://github.com/flathub/org.srb2.SRB2Kart/issues/60) in the repo (for the failure to update to the 24.08 runtime), a stacktrace is given that says
 ```shell
 At global scope:
-cc1plus: note: unrecognized command-line option ‘-Wno-global-constructors’ may have been intended to silence earlier diagnostics
-cc1plus: note: unrecognized command-line option ‘-Wno-exit-time-destructors’ may have been intended to silence earlier diagnostics
-cc1plus: note: unrecognized command-line option ‘-Wno-covered-switch-default’ may have been intended to silence earlier diagnostics
-cc1plus: note: unrecognized command-line option ‘-Wno-c++98-compat-pedantic’ may have been intended to silence earlier diagnostics
-cc1plus: note: unrecognized command-line option ‘-Wno-c++98-compat’ may have been intended to silence earlier diagnostics
+cc1plus: note: unrecognized command-line option ‘-Wno-global-constructors’
+may have been intended to silence earlier diagnostics
+cc1plus: note: unrecognized command-line option ‘-Wno-exit-time-destructors’
+may have been intended to silence earlier diagnostics
+cc1plus: note: unrecognized command-line option ‘-Wno-covered-switch-default’
+may have been intended to silence earlier diagnostics
+cc1plus: note: unrecognized command-line option ‘-Wno-c++98-compat-pedantic’
+may have been intended to silence earlier diagnostics
+cc1plus: note: unrecognized command-line option ‘-Wno-c++98-compat’
+may have been intended to silence earlier diagnostics
+
 ninja: build stopped: subcommand failed.
 ```
 The key here is the `unrecognized command-line option` note and the `-Wno-` prefix, which tells us it's a `Wno-error` for a CL option
@@ -81,7 +87,8 @@ but after that it had some weird `GenericStringRef` error.
 
 In the same [GitHub issue](https://github.com/flathub/org.srb2.SRB2Kart/issues/60), this was ALSO present.
 ```shell
-/app/include/rapidjson/document.h: In member function ‘rapidjson::GenericStringRef<CharType>& rapidjson::GenericStringRef<CharType>::operator=(const rapidjson::GenericStringRef<CharType>&)’:
+/app/include/rapidjson/document.h:
+In member function ‘rapidjson::GenericStringRef<CharType>& rapidjson::GenericStringRef<CharType>::operator=(const rapidjson::GenericStringRef<CharType>&)’:
 /app/include/rapidjson/document.h:319:82: error: assignment of read-only member ‘rapidjson::GenericStringRef<CharType>::length’
   319 |     GenericStringRef& operator=(const GenericStringRef& rhs) { s = rhs.s; length = rhs.length; }
       |                                                                           ~~~~~~~^~~~~~~~~~~~
