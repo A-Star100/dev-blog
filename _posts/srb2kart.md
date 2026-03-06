@@ -16,7 +16,7 @@ I was honestly pretty surprised! So in this article I'm gonna tell you what happ
 
 ## Why did I update the runtime?
 The game was perfectly fine with the old 23.08 runtime; but it was EOL.
-The freedesktop runtime is crucial for every Flatpak because it includes several versions of tools such as CMake.
+The freedesktop runtime is very very *veryyy* crucial (I cannot stress this enough!) for every Flatpak because it includes several versions of tools such as CMake.
 And since SRB2Kart builds using a Makefile with a compiler included with the runtime, as well as several other libraries,
 this is why having an EOL runtime isn't too great.
 
