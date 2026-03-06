@@ -2,7 +2,7 @@
 title: "SRB2Kart's runtime update"
 excerpt: ""
 coverImage: "https://wiki.srb2.org/w/images/a/ac/Srb2kart_title.png"
-date: "2025-05-27"
+date: "2026-03-05"
 author:
   name: Anirudh Sevugan
   picture: "/assets/blog/authors/anirudh.png"
