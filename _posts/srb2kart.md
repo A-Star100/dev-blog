@@ -213,7 +213,7 @@ were fine with it I decided to leave it as is and only clean this up in a new PR
 ___
 
 And then, it got merged... my contributions were now included in [SRB2Kart on Flathub](https://flathub.org/apps/details/org.srb2.SRB2Kart).
-And many fans who were ***huge*** fans of [Tux](https://en.wikipedia.org/wiki/Tux_(mascot)) over here, were now able to update to my patched version.
+And now the Flathub page looked so much better because it lacked any EOL notices, and a couple hundred people downloaded the patched version :)
 I was pretty glad honestly :D, and it was a huge honor too.
 So now you've now got an insider look at what happened on the scene!!!
 The reason this is so cool is because I always used to **play** SRB2Kart, and **dream** of contributing.
