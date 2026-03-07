@@ -222,6 +222,18 @@ Well now it's both, I still play (of course man! i'm still trying to beat some r
 Thanks to everyone for their support, especially @cbm755 who was incredibly friendly and welcoming when I made the PR,
 and @yakushabb for giving some nice suggestions!
 
+## SRB2Kart's roots
+Okay, for everyone who's still stuck around for this long (kudos to you!), lets just have a little history lesson about SRB2Kart.
+In 1998, the original Sonic Robo Blast 2 (Games Factory version) was released.
+It was a sequel to the predecessor, Sonic Robo Blast, created by Sonikku back in 1997.
+In 1999, SSNTails showed interest in the game and suggested it be migrated to use the Doom Legacy engine.
+So, a kid-friendly fangame ended up using the same engine as a Mature 17+ shooter. Kinda funny honestly.
+But anyway, after this, all the way in 2018, SRB2Kart was released. It was a fork of SRB2 (which at this time had evolved much since 1998!)
+that was a kart racer.
+
+This also means a lot of SRB2 and Kart's source code is from decades ago, loosely modified from time to time.
+That's why a lot of these compatibility hacks were required, but it goes to show how long SRB2 has lasted.
+
 ## So, what's the new PR for?
 It's not crucial, but it is for a library migration
 You see, SRB2Kart works on Steam Decks.
