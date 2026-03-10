@@ -16,7 +16,7 @@ I was honestly pretty surprised! So in this article I'm gonna tell you what happ
 
 ## Why did I update the runtime?
 The game was perfectly fine with the old 23.08 runtime; but it was EOL.
-The freedesktop runtime is **super duper** crucial (I cannot stress this enough!) for every Flatpak because it includes several versions of tools such as CMake.
+The freedesktop runtime is **very** crucial (I cannot stress this enough!) for every Flatpak because it includes several versions of tools such as CMake.
 And since SRB2Kart builds using a Makefile with a compiler included with the runtime, as well as several other libraries,
 this is why having an EOL runtime isn't too great.
 
@@ -43,15 +43,25 @@ But *after* this another problem arised...
 As mentioned in a [GitHub issue](https://github.com/flathub/org.srb2.SRB2Kart/issues/60) in the repo (for the failure to update to the 24.08 runtime), a stacktrace is given that says
 ```shell
 At global scope:
-cc1plus: note: unrecognized command-line option ‘-Wno-global-constructors’
+cc1plus: note:
+unrecognized command-line
+option ‘-Wno-global-constructors’
 may have been intended to silence earlier diagnostics
-cc1plus: note: unrecognized command-line option ‘-Wno-exit-time-destructors’
+cc1plus: note:
+unrecognized command-line
+option ‘-Wno-exit-time-destructors’
 may have been intended to silence earlier diagnostics
-cc1plus: note: unrecognized command-line option ‘-Wno-covered-switch-default’
+cc1plus: note:
+unrecognized command-line
+option ‘-Wno-covered-switch-default’
 may have been intended to silence earlier diagnostics
-cc1plus: note: unrecognized command-line option ‘-Wno-c++98-compat-pedantic’
+cc1plus: note:
+unrecognized command-line
+option ‘-Wno-c++98-compat-pedantic’
 may have been intended to silence earlier diagnostics
-cc1plus: note: unrecognized command-line option ‘-Wno-c++98-compat’
+cc1plus: note:
+unrecognized command-line
+option ‘-Wno-c++98-compat’
 may have been intended to silence earlier diagnostics
 
 ninja: build stopped: subcommand failed.
@@ -72,8 +82,8 @@ The only reason this was stopping us is because the compiler wanted to make sure
 And thankfully, I don't think I did.
 
 ### rapidjson
-This library is ALSO used in SRB2Kart (and its forks).
-It is a really really fast JSON parser. I *think* it's used for the API for the SRB2Kart Master Server???
+This library is *also* used in SRB2Kart (and its forks).
+It is a really really fast JSON parser. I *think* it's used for the API for the SRB2Kart Master Server or something???
 
 You see, the way online play works in SRB2Kart is there is a master server that contains info about active game servers (that were public (NOT LAN-only) and had advertising enabled in-game).
 Its API returns back active servers and their IP addresses once it receives a GET request to the right endpoint (a good tool for examining APIs is [Postman](https://www.postman.com/), so when you play SRB2Kart you can use the server browser (which fetches data from the master server)
@@ -85,7 +95,7 @@ But I digress, I should probably review the source code to make sure.
 *Anyway*, `rapidjson` had the same CMake compatibility issue as `discord-rpc` (another `- -DCMAKE_POLICY_VERSION_MINIMUM=3.5`)
 but after that it had some weird `GenericStringRef` error.
 
-In the same [GitHub issue](https://github.com/flathub/org.srb2.SRB2Kart/issues/60), this was ALSO present.
+In the same [GitHub issue](https://github.com/flathub/org.srb2.SRB2Kart/issues/60), this was *also* present.
 ```shell
 /app/include/rapidjson/document.h:
 In member function ‘rapidjson::GenericStringRef<CharType>& rapidjson::GenericStringRef<CharType>::operator=(const rapidjson::GenericStringRef<CharType>&)’:
@@ -174,7 +184,7 @@ Apparently on x64 machines /app/lib64 is used by the compiler for that arch's bu
 and /app/lib is used for almost everything else.
 That is why when I tested on my arm64 Ubuntu VM, everything worked!
 But on a heavily used MacBook Air I had with [t2linux](https://t2linux.org) on it, it did not work.
-Thankfully I tested this before I pushed this broken build to prod, and caused **chaos** for all the players worldwide.
+Thankfully I tested this before I pushed this broken build to prod!
 
 How did I fix this??
 Well I just added 
@@ -216,7 +226,7 @@ And then, it got merged... my contributions were now included in [SRB2Kart on Fl
 And now the Flathub page looked so much better because it lacked any EOL notices, and a couple hundred people downloaded the patched version :)
 I was pretty glad honestly :D, and it was a huge honor too.
 So now you've now got an insider look at what happened on the scene!!!
-The reason this is so cool is because I always used to **play** SRB2Kart, and **dream** of contributing.
+The reason this is so cool is because I always used to play SRB2Kart, and dream of contributing.
 Well now it's both, I still play (of course man! i'm still trying to beat some records in Time attack!!) *and* contributed!
 
 Thanks to everyone for their support, especially @cbm755 who was incredibly friendly and welcoming when I made the PR,
@@ -243,6 +253,7 @@ But SRB2Kart doesn't take advantage AMDX support, it just uses Gamescope to comp
 
 But the library used for gamescope support (`com.valvesoftware.Steam.Utility.gamescope`) was deprecated recently.
 While this is fine for now, it means it'll get NO security updates... or any updates really.
-It's officially been migrated to `org.freedesktop.Platform.VulkanLayer.gamescope`, which is actually SUPPORTED.
+It's officially been migrated to `org.freedesktop.Platform.VulkanLayer.gamescope`, which is actually SUPPORTED (albeit it needs a hack to function
+, but it isn't bad, just a `--env` in `finish-args`)
 So I made this [new PR](https://github.com/flathub/org.srb2.SRB2Kart/pull/72/) just for gamescope.
 Once it gets merged, I'll see ya then!
