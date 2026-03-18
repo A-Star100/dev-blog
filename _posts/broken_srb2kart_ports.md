@@ -2,7 +2,7 @@
 title: "My broken SRB2Kart ports"
 excerpt: ""
 coverImage: "/assets/blog/srb2kartsnap/cool_tails.png"
-date: "2025-05-27"
+date: "2026-03-17"
 author:
   name: Anirudh Sevugan
   picture: "/assets/blog/authors/anirudh.png"
