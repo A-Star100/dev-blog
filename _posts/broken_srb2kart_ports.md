@@ -62,8 +62,47 @@ CI/CD (Continuous Integration/Continuous Development) lets you run builds automa
 when you make changes to the code in your Git repository (basically a place to store your code).
 And I decided to use QEMU (an emulator that could emulate TONS of different arches on TONS of different hardware)
 for the build process.
-Now, I'm not gonna delve into exactly what happened because that would take ages. If I told you what happened every second,
-it would go on for about 3 days (which is how long I tried to do this for)
+Now, I'm not gonna delve into exactly what happened because that would take ages...
+but I'll skim.
 AND before that I tried to make a RISC-V port of a totally different app...
 that didn't go too well either.
-(to be continued, the GitHub repo for the Snap is [here](https://github.com/A-Star100/SRB2Kart-Snap/))
+The Snap built fine on amd64 and arm64, but for the other arches it'd often require
+patching the manifest because of the way the `platforms` key works.
+Before I modified the manifest (and added patching workflows again)
+It used to look like this:
+```yaml
+platforms:
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
+  arm64:
+    build-on: [arm64]
+    build-for: [arm64]
+```
+But during the build process other arch runners would (obviously)
+whine that they aren't supported.
+So I changed it to 
+```yaml
+platforms:
+  amd64:
+  arm64:
+  armhf:
+  riscv64:
+```
+after a long while of troubleshooting and having cross compile keys just not work.
+And after adding a long list of patches for i386, things looked promising... but it all came crumbling down.
+
+### Why'd it fail?
+Well, it failed because despite QEMU being registered and used in the workflows, the `snapcraft` CLI would use the compilers on the host.
+This meant that `snapcraft` would ignore the QEMU emulation layer and go directly to the host and talk with it natively during compilation,
+but the platform checker adhered to the emulation layer... so, how could this be fixed?
+There are a couple of things to try, but at this point I was burned out.
+The only way those CI/CD workflows would have worked properly in their original state was if they were done on real hardware.
+And not only is self hosting a runner a bad idea on a public repo, I can't buy RISC-V, armhf, and i386 hardware without
+some serious consequences... so yeah.
+
+### Will support be back?
+Well, if `snapcraft` adheres to the emulation better in the upcoming v9, or I have enough time and thinking power
+to try again, it could happen, but it's not guaranteed.
+
+Anyway, I'm out. See ya :D
